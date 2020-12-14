@@ -1,6 +1,7 @@
 <?php
     session_start();
     require_once __DIR__.'/templates/cabecalho.php';
+    include_once __DIR__.'/../../../database/conexao.php';
 ?>
 <section class="container">
     <h1>Contatos</h1>
