@@ -10,6 +10,9 @@
         die();
     }
     $adm = $_SESSION['perfil'];
+
+    include_once '/../../../database/conexao.php';
+    include_once '/../../../database/create_table.php';
 ?>
 <section class="container">
 
@@ -24,18 +27,22 @@
 
             echo "<table class='table table-bordered'>"
                     ."<tr>"
+                        ."<th>ID</th>"
                         ."<th>nome</th>"
                         ."<th>email</th>"
                         ."<th>telefone</th>"
                         ."<th>ações</th>"
                     ."</tr>";
-            $contatos = $_SESSION['contatos'];
-            foreach ($contatos as $contato) {
+
+            $registros = $pdo->query('SELECT * FROM contatos');
+
+            foreach ($registros as $registro) {
                 echo "<tr>"
-                        ."<td>{$contato['nome']}</td>"
-                        ."<td>{$contato['email']}</td>"
-                        ."<td>{$contato['telefone']}</td>"
-                        ."<td><a href='#'>remover</a>, <a href='#'>editar</a></td>"
+                        ."<td>{$registro[0]}</td>"
+                        ."<td>{$registro[1]}</td>"
+                        ."<td>{$registro[2]}</td>"
+                        ."<td>{$registro[3]}</td>"
+                        ."<td><a href='/../../../database/deletar.php?id=".$registro[0].">remover</a>, <a href='/../form_editar.php?id=".$registro[0]."'>editar</a></td>"
                     ."</tr>";
             }
 

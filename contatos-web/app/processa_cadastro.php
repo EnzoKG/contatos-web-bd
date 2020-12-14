@@ -25,7 +25,7 @@ if(!empty($nome) and !empty($email))
     die();
 } else {
     $msgErro = "O nome e o email são obrigatórios";
-    $msgErro = filter_var($msgErro, FILTER_SANITIZE_ENCODE);
+    //$msgErro = filter_var($msgErro, FILTER_SANITIZE_ENCODE);
     header("Location: ".rotaPages('form.php?erro='.$msgErro));
     die();
 }
