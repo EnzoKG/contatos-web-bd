@@ -11,18 +11,19 @@
     }
     $adm = $_SESSION['perfil'];
 
-    include_once '/../../../database/conexao.php';
-    include_once '/../../../database/create_table.php';
+    include_once __DIR__.'/../../../database/conexao.php';
+    include_once __DIR__.'/../../../database/create_table.php';
 ?>
 <section class="container">
 
     <h1 class="welcome">Bem vindo, <?=$adm?></h1>
-
+    <br>
     <button><a class="btn btn-primary" href="../form.php">Cadastrar contato</a></button>
     <br>
     <?php
-        //var_dump($_SESSION);
-        if(isset($_SESSION['contatos']))
+        $sql = $pdo->query("SELECT * FROM contatos");
+        $row = $sql->fetch();
+        if($row > 0)
         {
 
             echo "<table class='table table-bordered'>"
@@ -42,7 +43,7 @@
                         ."<td>{$registro[1]}</td>"
                         ."<td>{$registro[2]}</td>"
                         ."<td>{$registro[3]}</td>"
-                        ."<td><a href='/../../../database/deletar.php?id=".$registro[0].">remover</a>, <a href='/../form_editar.php?id=".$registro[0]."'>editar</a></td>"
+                        ."<td><a href=\"/../../../database/deletar.php?id=$registro[0]\">remover</a>, <a href='/public/pages/form_editar.php?id=$registro[0]'>editar</a></td>"
                     ."</tr>";
             }
 

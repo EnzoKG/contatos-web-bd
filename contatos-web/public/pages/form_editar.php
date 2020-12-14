@@ -11,6 +11,10 @@
             <input class="form-input" type="email" name="email" id="email" placeholder="Novo Email">
             <input class="form-input" type="text" name="telefone" id="telefone" placeholder="Novo Telefone">
             <input class="btn btn-success" type="submit" value="Atualizar">
+            <?php
+                $id = $_GET["id"];
+                echo "<input type='hidden' name='id' value='".$id."'>";
+            ?>
         </form>
     </div>
     
