@@ -11,16 +11,20 @@
 
             echo "<table class='table table-bordered'>"
                     ."<tr>"
+                        ."<th>ID</th>"
                         ."<th>nome</th>"
                         ."<th>email</th>"
                         ."<th>telefone</th>"
                     ."</tr>";
-            $contatos = $_SESSION['contatos'];
-            foreach ($contatos as $contato) {
+
+            $registros = $pdo->query('SELECT * FROM contatos');
+
+            foreach ($registros as $registro) {
                 echo "<tr>"
-                        ."<td>{$contato['nome']}</td>"
-                        ."<td>{$contato['email']}</td>"
-                        ."<td>{$contato['telefone']}</td>"
+                    ."<td>{$registro[0]}</td>"
+                    ."<td>{$registro[1]}</td>"
+                    ."<td>{$registro[2]}</td>"
+                    ."<td>{$registro[3]}</td>"
                     ."</tr>";
             }
 
